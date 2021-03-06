@@ -29,4 +29,16 @@
     <update id="updateUser" parameterType="com.xjm.pojo.User">
         update user set name=#{name},pwd=#{pwd} where id = #{id}
     </update>
+    
+    <select id="selectLike" resultType="com.xjm.pojo.User">
+        select * from user where name like #{value}
+    </select>
+
+    <select id="selectLike2" resultType="com.xjm.pojo.User">
+        select * from user where name like "%"#{value}"%"
+    </select>
+
+    <select id="selectLike3" resultType="com.xjm.pojo.User">
+        select * from user where name like "%"${value}"%"
+    </select>
 </mapper>

@@ -26,4 +26,12 @@ public interface UserMapper {
 
    //修改一个用户
    int updateUser(User user);
+
+   //模糊查询
+   List<User> selectLike(String value);
+
+   //模糊查询 #{} 不会引起sql注入
+   List<User> selectLike2(String value);
+   //模糊查询 ${} 会引起sql注入
+   List<User> selectLike3(String value);
 }

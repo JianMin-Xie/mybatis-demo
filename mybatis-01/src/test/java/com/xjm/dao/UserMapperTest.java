@@ -93,4 +93,42 @@ public class UserMapperTest {
         session.commit(); //提交事务,重点!不写的话不会提交到数据库
         session.close();
     }
+
+    //第1种：在Java代码中添加sql通配符。
+    @Test
+    public void testselectLike() {
+        SqlSession session = MybatisUtils.getSession();
+        UserMapper mapper = session.getMapper(UserMapper.class);
+        List<User> userList = mapper.selectLike("%李%");
+        for (User user : userList) {
+            System.out.println(user);
+        }
+        session.close();
+    }
+    //第2种：在sql语句中拼接通配符，#{} 不会引起sql注入
+    @Test
+    public void testselectLike2() {
+        SqlSession session = MybatisUtils.getSession();
+        UserMapper mapper = session.getMapper(UserMapper.class);
+
+        List<User> userList = mapper.selectLike2("李");
+        for (User user : userList) {
+            System.out.println(user);
+        }
+        session.close();
+    }
+    //第2种：在sql语句中拼接通配符，${} 会引起sql注入
+    @Test
+    public void testselectLike3() {
+        SqlSession session = MybatisUtils.getSession();
+        UserMapper mapper = session.getMapper(UserMapper.class);
+
+        List<User> userList = mapper.selectLike3(" or 1=1 #");
+        for (User user : userList) {
+            System.out.println(user);
+        }
+        session.close();
+    }
+
+
 }
