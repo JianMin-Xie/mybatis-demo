@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--导入properties文件-->
+    <properties resource="db.properties"/>
+
+<!--    <settings>-->
+<!--        &lt;!&ndash; 打印查询语句 &ndash;&gt;-->
+<!--        <setting name="logImpl" value="STDOUT_LOGGING" />-->
+<!--    </settings>-->
+
+    <!--配置别名,注意顺序-->
+    <typeAliases>
+        <typeAlias type="com.xjm.pojo.User" alias="User"/>
+
+        <!--别名指定一个包,@Alias-->
+        <!--<package name="com.xjm.pojo"/>-->
+    </typeAliases>
+
+    <!--
+    plugins在配置文件中的位置必须符合要求，否则会报错，顺序如下:
+    properties?, settings?,
+    typeAliases?, typeHandlers?,
+    objectFactory?,objectWrapperFactory?,
+    plugins?,
+    environments?, databaseIdProvider?, mappers?
+-->
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--mappers元素：引入资源方式-->
+    <mappers>
+        <!-- 1. 使用相对于类路径的资源引用 -->
+<!--        <mapper resource="com/xjm/dao/UserMapper.xml"></mapper>-->
+        <!--
+            2. 使用映射器接口实现类的完全限定类名
+            需要配置文件名称和接口名称一致，并且位于同一目录下
+        -->
+        <mapper class="com.xjm.dao.UserMapper"/>
+
+        <!--
+            3. 将包内的映射器接口实现全部注册为映射器
+            但是需要配置文件名称和接口名称一致，并且位于同一目录下
+        -->
+        <!--<package name="com.xjm.dao"/>-->
+    </mappers>
+
+
+</configuration>
