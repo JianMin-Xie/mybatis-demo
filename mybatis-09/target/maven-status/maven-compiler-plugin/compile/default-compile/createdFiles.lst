@@ -1,0 +1,5 @@
+com\xjm\utils\MybatisUtils.class
+com\xjm\pojo\Student.class
+com\xjm\pojo\Teacher.class
+com\xjm\mapper\StudentMapper.class
+com\xjm\mapper\TeacherMapper.class
