@@ -1,0 +1,4 @@
+com\xjm\mapper\BlogMapper.class
+com\xjm\utils\MybatisUtils.class
+com\xjm\pojo\Blog.class
+com\xjm\utils\IDUtil.class
