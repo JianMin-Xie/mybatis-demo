@@ -102,9 +102,9 @@ public class MyTest {
 
         HashMap map = new HashMap();
         List<Integer> ids = new ArrayList<Integer>();
-        ids.add(1);
-        ids.add(2);
-        ids.add(3);
+//        ids.add(1);
+//        ids.add(2);
+//        ids.add(3);
         map.put("ids",ids);
 
         List<Blog> blogs = mapper.queryBlogForeach(map);

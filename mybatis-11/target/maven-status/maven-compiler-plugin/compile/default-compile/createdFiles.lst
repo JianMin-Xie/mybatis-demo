@@ -1,0 +1,4 @@
+com\xjm\mapper\UserMapper.class
+com\xjm\utils\MybatisUtils.class
+com\xjm\pojo\User.class
+com\xjm\utils\IDUtil.class
